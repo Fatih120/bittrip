@@ -295,6 +295,21 @@ config.libs = [
             Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
         ],
     },
+    {
+        "lib": "main",
+        "mw_version": config.linker_version,
+        "cflags": cflags_base,
+        "progress_category": "game",
+        "src_dir": "",
+        "objects": [
+            Object(Matching, "src/main/strings.cpp"),
+            # Object(Matching, "src/main/fn_80060ABC.c"),
+            Object(Matching, "src/main/fn_80229EA4.cpp"),
+            Object(Matching, "src/main/fn_80232B08.cpp"),
+            Object(Matching, "src/main/fn_80232B10.cpp"),
+            Object(Matching, "src/main/fn_80232B18.cpp"),
+        ],
+    },
 ]
 
 

@@ -12,3 +12,15 @@ Sections:
 	.sdata2     type:rodata align:32
 	.sbss2      type:bss align:16
 	.bss        type:bss align:32
+
+src/main/strings.cpp:
+	.rodata     start:0x805EE080 end:0x805EE110
+
+src/main/fn_80232B08.cpp:
+	.text       start:0x80232B08 end:0x80232B10
+
+src/main/fn_80232B10.cpp:
+	.text       start:0x80232B10 end:0x80232B18
+
+src/main/fn_80232B18.cpp:
+	.text       start:0x80232B18 end:0x80232B20

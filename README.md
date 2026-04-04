@@ -1,9 +1,60 @@
-decomp-toolkit Project Template
+BIT.TRIP COMPLETE
 ===============================
+![Banner](assets/banner.png)
 
-If starting a new GameCube / Wii decompilation project, this repository can be used as a scaffold.
+Decompilation of BIT.TRIP COMPLETE for the Wii, and effectively each individual BIT.TRIP Wiiware entry.
 
 See [decomp-toolkit](https://github.com/encounter/decomp-toolkit) for background on the concept and more information on the tooling used.
+
+This repository does **not** contain any game assets or assembly whatsoever. An existing copy of the game is required.
+
+The Game ID is SVTEXS, SHA-1 for main.dol is `9aca906b6e11bdf9a95a382095dbe84cbf83c206`.
+
+Dependencies
+============
+
+Windows
+--------
+
+On Windows, it's **highly recommended** to use native tooling. WSL or msys2 are **not** required.  
+When running under WSL, [objdiff](#diffing) is unable to get filesystem notifications for automatic rebuilds.
+
+- Install [Python](https://www.python.org/downloads/) and add it to `%PATH%`.
+  - Also available from the [Windows Store](https://apps.microsoft.com/store/detail/python-311/9NRWMJP3717K).
+- Download [ninja](https://github.com/ninja-build/ninja/releases) and add it to `%PATH%`.
+  - Quick install via pip: `pip install ninja`
+
+Linux
+------
+
+- Install [ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages).
+
+[wibo](https://github.com/decompals/wibo), a minimal 32-bit Windows binary wrapper, will be automatically downloaded and used.
+
+Building
+========
+
+- Clone the repository:
+
+  ```sh
+  git clone https://github.com/Fatih120/bittrip.git
+  ```
+
+- Copy your game's disc image to `orig/SVTEXS`.
+  - Supported formats: ISO (GCM), RVZ, WIA, WBFS, CISO, NFS, GCZ, TGC
+  - After the initial build, the disc image can be deleted to save space.
+
+- Configure:
+
+  ```sh
+  python configure.py
+  ```
+
+- Build:
+
+  ```sh
+  ninja
+  ```
 
 Documentation
 -------------
@@ -19,25 +70,9 @@ General:
 - [Common BSS](docs/common_bss.md)
 - [`.comment` section](docs/comment_section.md)
 
-References
---------
-
-- [Discord: GC/Wii Decompilation](https://discord.gg/hKx3FJJgrV) (Come to `#dtk` for help!)
-- [objdiff](https://github.com/encounter/objdiff) (Local diffing tool)
-- [decomp.me](https://decomp.me) (Collaborate on matches)
-- [decomp.dev](https://decomp.dev) (Decompilation progress hub and API)
-- [wibo](https://github.com/decompals/wibo) (Minimal Win32 wrapper for Linux)
-- [sjiswrap](https://github.com/encounter/sjiswrap) (UTF-8 to Shift JIS wrapper)
-
-Nearly all active GC/Wii decompilation projects use this structure, and will be useful
-for reference. A list of active GC/Wii projects can be found on [decomp.dev](https://decomp.dev).
-
 Features
 --------
 
-- Few external dependencies: Just `python` for the generator and `ninja` for the build system. See [Dependencies](docs/dependencies.md).
-- Simple configuration: Everything lives in `config.yml`, `symbols.txt`, and `splits.txt`.
-- Multi-version support: Separate configurations for each game version, and a `configure.py --version` flag to switch between them.
 - Feature-rich analyzer: Many time-consuming tasks are automated, allowing you to focus on the decompilation itself. See [Analyzer features](https://github.com/encounter/decomp-toolkit#analyzer-features).
 - REL support: RELs each have their own `symbols.txt` and `splits.txt`, and will automatically be built and linked against the main binary.
 - No manual assembly: decomp-toolkit handles splitting the DOL into relocatable objects based on the configuration. No game assets are committed to the repository.
@@ -57,10 +92,3 @@ Project structure
 - `src/` - C/C++ source files.
 - `include/` - C/C++ header files.
 - `tools/` - Scripts shared between projects.
-
-Temporary, delete when done:
-
-- `config/GAMEID/config.example.yml` - Example configuration file and documentation.
-- `docs/` - Documentation for decomp-toolkit configuration.
-- `README.md` - This file, replace with your own. For a template, see [`README.example.md`](README.example.md).
-- `LICENSE` - This repository is licensed under the CC0 license. Replace with your own if desired.
