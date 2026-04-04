@@ -1,0 +1,9 @@
+# See config.example.yml for documentation.
+object_base: orig/SVTEXS
+object: sys/main.dol
+hash: e9eaca22bf88ce814bd0d3ec71d7d61bc6d37543
+symbols: config/SVTEXS/symbols.txt
+splits: config/SVTEXS/splits.txt
+# Change this to match the linker version.
+# See config.example.yml for a list.
+mw_comment_version: 11
