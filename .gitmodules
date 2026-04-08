@@ -1,0 +1,3 @@
+[submodule "tools/dar"]
+	path = tools/dar
+	url = https://github.com/Meatball132/DARTools.git
