@@ -304,6 +304,7 @@ config.libs = [
         "objects": [
             Object(Matching, "src/main/strings.cpp"),
             # Object(Matching, "src/main/fn_80060ABC.c"),
+            Object(Matching, "src/main/fn_8009A8E4.cpp"),
             Object(Matching, "src/main/fn_80229EA4.cpp"),
             Object(Matching, "src/main/fn_80232B08.cpp"),
             Object(Matching, "src/main/fn_80232B10.cpp"),
